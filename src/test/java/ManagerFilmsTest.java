@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class RepositoryFilmsTest {
+public class ManagerFilmsTest {
 
     Films film1 = new Films(1, "Бладшот", "боевик");
     Films film2 = new Films(2, "Вперед", "мультфильм");
@@ -15,7 +15,7 @@ public class RepositoryFilmsTest {
 
     public void testAdd() {
 
-        ManagerFilms repo = new ManagerFilms(); // данная строка делает ссылку на класс RepositoryFilms
+        ManagerFilms repo = new ManagerFilms(); // данная строка делает ссылку на класс ManagerFilmsTest
 
         repo.addFilms(film1); // через переменную repo. вызываем метод addFilms, который примет элемент film1
         repo.addFilms(film2); // через переменную repo. вызываем метод addFilms, который примет элемент film2
