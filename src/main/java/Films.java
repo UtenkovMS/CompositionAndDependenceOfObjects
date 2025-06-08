@@ -3,8 +3,6 @@ public class Films {
     private int id;
     private String nameFilms; // имя фильма
     private String genreFilms; // жанр фильма
-    private int dataOutput; // количество выводимых данных
-
 
     public Films(int id, String nameFilms, String genreFilms) { // название конструктора должно повторять название класса
 
@@ -13,20 +11,8 @@ public class Films {
         this.genreFilms = genreFilms; // позволяет задавать жанр фильма
     }
 
-    public Films (){
-        this.dataOutput = 5; // количество выводимых данных по умолчанию
-    }
-
-    public Films(int dataOutput) {
-        this.dataOutput = dataOutput; // позволяет через тест менять количество выводимых данных
-    }
-
     public int getId() { // метод отражения id
         return id;
-    }
-
-    public int getDataOutput() { // метод отражения кол-ва выводимых данных
-        return dataOutput;
     }
 
     @Override
