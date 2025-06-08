@@ -15,7 +15,7 @@ public class RepositoryFilmsTest {
 
     public void testAdd() {
 
-        RepositoryFilms repo = new RepositoryFilms(); // данная строка делает ссылку на класс RepositoryFilms
+        ManagerFilms repo = new ManagerFilms(); // данная строка делает ссылку на класс RepositoryFilms
 
         repo.addFilms(film1); // через переменную repo. вызываем метод addFilms, который примет элемент film1
         repo.addFilms(film2); // через переменную repo. вызываем метод addFilms, который примет элемент film2
@@ -38,7 +38,7 @@ public class RepositoryFilmsTest {
 
     public void testDelete() {
 
-        RepositoryFilms repo = new RepositoryFilms();
+        ManagerFilms repo = new ManagerFilms();
         repo.addFilms(film1); // через переменную repo. вызываем метод addFilms, который примет элемент film1
         repo.addFilms(film2); // через переменную repo. вызываем метод addFilms, который примет элемент film2
         repo.addFilms(film3); // через переменную repo. вызываем метод addFilms, который примет элемент film3
@@ -61,7 +61,7 @@ public class RepositoryFilmsTest {
     @Test
     public void testFindLast() {
 
-        RepositoryFilms repo = new RepositoryFilms();
+        ManagerFilms repo = new ManagerFilms();
         repo.addFilms(film1); // через переменную repo. вызываем метод addFilms, который примет элемент film1
         repo.addFilms(film2); // через переменную repo. вызываем метод addFilms, который примет элемент film2
         repo.addFilms(film3); // через переменную repo. вызываем метод addFilms, который примет элемент film3
@@ -70,7 +70,23 @@ public class RepositoryFilmsTest {
         repo.addFilms(film6);
         repo.addFilms(film7);
 
-        Films[] expected = {film7, film6, film5, film4, film3, film2, film1};
+        Films[] expected = {film7, film6, film5};
+        Films[] actual = repo.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+
+        for (Films actualFilm : actual) // цикл, который перебирает элементы actualFilm массива Films в пределах массива actual
+            System.out.println(actualFilm);
+    }
+
+    @Test
+    public void testFindLast2() {
+
+        ManagerFilms repo = new ManagerFilms();
+        repo.addFilms(film6);
+        repo.addFilms(film7);
+
+        Films[] expected = {film7, film6};
         Films[] actual = repo.findLast();
 
         Assertions.assertArrayEquals(expected, actual);
@@ -82,7 +98,8 @@ public class RepositoryFilmsTest {
     @Test
     public void testFindLastDefault() {
 
-        RepositoryFilms repo = new RepositoryFilms();
+        Films films = new Films();
+        ManagerFilms repo = new ManagerFilms();
         repo.addFilms(film1); // через переменную repo. вызываем метод addFilms, который примет элемент film1
         repo.addFilms(film2); // через переменную repo. вызываем метод addFilms, который примет элемент film2
         repo.addFilms(film3); // через переменную repo. вызываем метод addFilms, который примет элемент film3
@@ -92,7 +109,7 @@ public class RepositoryFilmsTest {
         repo.addFilms(film7);
 
         Films[] expected = {film7, film6, film5, film4, film3};
-        Films[] actual = repo.setFindLastDefault();
+        Films[] actual = repo.findLastDefault();
 
         Assertions.assertArrayEquals(expected, actual);
 
@@ -103,53 +120,15 @@ public class RepositoryFilmsTest {
     @Test
     public void testFindLastDefault1() {
 
-        RepositoryFilms repo = new RepositoryFilms();
+        Films films = new Films();
+        ManagerFilms repo = new ManagerFilms();
         repo.addFilms(film4);
         repo.addFilms(film5);
         repo.addFilms(film6);
         repo.addFilms(film7);
 
         Films[] expected = {film7, film6, film5, film4};
-        Films[] actual = repo.setFindLastDefault();
-
-        Assertions.assertArrayEquals(expected, actual);
-
-        for (Films actualFilm : actual) // цикл, который перебирает элементы actualFilm массива Films в пределах массива actual
-            System.out.println(actualFilm);
-    }
-
-
-
-    @Test
-    public void testSetFindLast2() {
-
-        RepositoryFilms repo = new RepositoryFilms();
-        repo.addFilms(film1); // через переменную repo. вызываем метод addFilms, который примет элемент film1
-        repo.addFilms(film2); // через переменную repo. вызываем метод addFilms, который примет элемент film2
-        repo.addFilms(film3); // через переменную repo. вызываем метод addFilms, который примет элемент film3
-        repo.addFilms(film4);
-        repo.addFilms(film5);
-        repo.addFilms(film6);
-        repo.addFilms(film7);
-
-        Films[] expected = {film7, film6, film5};
-        Films[] actual = repo.setFindLast();
-
-        Assertions.assertArrayEquals(expected, actual);
-
-        for (Films actualFilm : actual) // цикл, который перебирает элементы actualFilm массива Films в пределах массива actual
-            System.out.println(actualFilm);
-    }
-
-    @Test
-    public void testSetFindLast3() {
-
-        RepositoryFilms repo = new RepositoryFilms();
-        repo.addFilms(film6);
-        repo.addFilms(film7);
-
-        Films[] expected = {film7, film6};
-        Films[] actual = repo.setFindLast();
+        Films[] actual = repo.findLastDefault();
 
         Assertions.assertArrayEquals(expected, actual);
 

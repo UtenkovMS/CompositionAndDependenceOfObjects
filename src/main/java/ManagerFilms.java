@@ -1,4 +1,4 @@
-public class RepositoryFilms {
+public class ManagerFilms {
 
     private Films[] films = new Films[0]; // cоздаем пустой массив
 
@@ -39,19 +39,7 @@ public class RepositoryFilms {
 
     public Films[] findLast() {
 
-        Films[] all = findAll();  // Получаем полный список всех фильмов методом findAll()
-        Films[] reverced = new Films[all.length]; // создаем массив Films[] reverced такой же длины, как массив Films[] all
-        for (int i = 0; i < reverced.length; i++) {
-            reverced[i] = all[all.length - 1 - i]; // Заполняем элементы массива Films[] reverced значениями из массива Films[] all,
-            // начиная с конца
-
-        }
-        return reverced;
-    }
-
-    public Films[] setFindLastDefault() {
-
-        Films tmp = new Films(5);
+        Films tmp = new Films(3);
 
         int resultLength;
         if (films.length < tmp.getDataOutput()) {
@@ -67,15 +55,15 @@ public class RepositoryFilms {
         return reverced;
     }
 
-    public Films[] setFindLast() {
+    public Films[] findLastDefault() {
 
-        Films tmp = new Films(3);
+        Films tmp = new Films();
 
         int resultLength;
-        if (films.length < tmp.setAmontData()) {
+        if (films.length < tmp.getDataOutput()) {
             resultLength = films.length;
         } else {
-            resultLength = tmp.setAmontData();
+            resultLength = tmp.getDataOutput();
         }
 
         Films[] reverced = new Films[resultLength];
